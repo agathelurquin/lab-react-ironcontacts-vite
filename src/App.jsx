@@ -16,10 +16,24 @@ function App() {
     setContacts([...contacts, randomContact]);
   }
 
+  function handleSortName() {
+    const copy = [...contacts];
+    copy.sort((a, b) => a.name.localeCompare(b.name));
+    setContacts(copy);
+  }
+
+  function handleSortPopularity() {
+    const copy = [...contacts];
+    copy.sort((a, b) => b.popularity - a.popularity);
+    setContacts(copy);
+  }
+
   return (
     <div className="App">
       <h1>LAB | React IronContacts</h1>
       <button onClick={handleRandomContact}>Add Random Contact</button>
+      <button onClick={handleSortName}>Sort by Name</button>
+      <button onClick={handleSortPopularity}>Sort by Popularity</button>
       <table>
         <thead>
           <tr>

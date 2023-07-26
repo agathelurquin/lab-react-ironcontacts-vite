@@ -28,6 +28,12 @@ function App() {
     setContacts(copy);
   }
 
+  function handleDelete(id) {
+    const copy = [...contacts];
+    copy.splice(id, 1);
+    setContacts(copy);
+  }
+
   return (
     <div className="App">
       <h1>LAB | React IronContacts</h1>
@@ -42,6 +48,7 @@ function App() {
             <th>Populatiry</th>
             <th>Won an Oscar</th>
             <th>Won an Emmy</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -59,6 +66,9 @@ function App() {
                 </td>
                 <td> {contact.wonOscar && contact.wonOscar && "🏆"}</td>
                 <td>{contact.wonEmmy && contact.wonEmmy && "🏆"}</td>
+                <td>
+                  <button onClick={handleDelete}>Delete</button>
+                </td>
               </tr>
             );
           })}
